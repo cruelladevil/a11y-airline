@@ -29,7 +29,15 @@ const SpinButton: React.FC = () => {
         <h1>승객 선택</h1>
         <div className="spinButtonLabel">
           <label htmlFor="adultCount">성인</label>
-          <div className="helpIcon" onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
+          <div
+            role="tooltip"
+            tabIndex={0}
+            className="helpIcon"
+            onMouseEnter={toggleTooltip}
+            onMouseLeave={toggleTooltip}
+            onFocus={toggleTooltip}
+            onBlur={toggleTooltip}
+          >
             ?{isTooltipVisible && <span className="tooltip">최대 인원수는 3명까지 가능합니다</span>}
           </div>
         </div>
