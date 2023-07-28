@@ -28,16 +28,16 @@ const SpinButton: React.FC = () => {
       <div>
         <h1>승객 선택</h1>
         <div className="spinButtonLabel">
-          <label>성인</label>
+          <label htmlFor="adultCount">성인</label>
           <div className="helpIcon" onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip}>
             ?{isTooltipVisible && <span className="tooltip">최대 인원수는 3명까지 가능합니다</span>}
           </div>
         </div>
-        <button onClick={decrement} className="spinButton">
+        <button aria-label="성인 탑승자 한명 줄이기 버튼" onClick={decrement} className="spinButton" type="button">
           -
         </button>
-        <input type="text" role="spinbutton" readOnly className="spinButtonInput" value={count} />
-        <button onClick={increment} className="spinButton">
+        <input id="adultCount" type="text" role="spinbutton" className="spinButtonInput" value={count} readOnly />
+        <button aria-label="성인 탑승자 한명 늘리기 버튼" onClick={increment} className="spinButton" type="button">
           +
         </button>
       </div>
