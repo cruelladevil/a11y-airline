@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import './SpinButton.css';
 
+const MAX_ADULT_PASSENGER = 3;
+
 const SpinButton: React.FC = () => {
   const [count, setCount] = useState(0);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   const increment = () => {
+    if (count === MAX_ADULT_PASSENGER) return;
+
     setCount((prevCount) => prevCount + 1);
   };
 
   const decrement = () => {
+    if (count === 0) return;
+
     setCount((prevCount) => prevCount - 1);
   };
 
