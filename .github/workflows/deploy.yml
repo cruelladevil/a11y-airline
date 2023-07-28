@@ -7,6 +7,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
     env:
       node-version: '18.16.1'
 
@@ -29,8 +34,8 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+        if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Build
         run: npm run build
