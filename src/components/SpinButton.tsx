@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SpinButton.css';
 
 const MAX_ADULT_PASSENGER = 3;
+const MIN_ADULT_PASSENGER = 0;
 
 const SpinButton: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -14,7 +15,7 @@ const SpinButton: React.FC = () => {
   };
 
   const decrement = () => {
-    if (count === 0) return;
+    if (count === MIN_ADULT_PASSENGER) return;
 
     setCount((prevCount) => prevCount - 1);
   };
