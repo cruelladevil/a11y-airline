@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SpinButton.css';
+import Announcer from './Announcer';
 
 const MAX_ADULT_PASSENGER = 3;
 const MIN_ADULT_PASSENGER = 0;
@@ -7,17 +8,20 @@ const MIN_ADULT_PASSENGER = 0;
 const SpinButton: React.FC = () => {
   const [count, setCount] = useState(0);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+  const [announcerText, setAnnouncerText] = useState('');
 
   const increment = () => {
     if (count === MAX_ADULT_PASSENGER) return;
 
     setCount((prevCount) => prevCount + 1);
+    setAnnouncerText(`성인 승객 추가 ${count + 1}`);
   };
 
   const decrement = () => {
     if (count === MIN_ADULT_PASSENGER) return;
 
     setCount((prevCount) => prevCount - 1);
+    setAnnouncerText(`성인 승객 감소 ${count - 1}`);
   };
 
   const toggleTooltip = () => {
@@ -49,6 +53,7 @@ const SpinButton: React.FC = () => {
         <button aria-label="성인 탑승자 한명 늘리기 버튼" onClick={increment} className="spinButton" type="button">
           +
         </button>
+        <Announcer text={announcerText} />
       </div>
     </section>
   );
